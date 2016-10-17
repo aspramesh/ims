@@ -1,0 +1,61 @@
+<title><%= 'Customer' %></title> 
+<div class="main-banner"><%= link_to image_tag("banner.jpg", alt: "Banner")%></div>
+<div class="clear"></div>     
+<div class="main-column">
+  <div class="main-column-content"> 
+    <div class="main-column-content-heading">      
+      <div class ="main-column-content-RightTopHeading search-link" >    
+      <%= link_to "Back", {:controller => 'customers', :action => 'index', :search => @searchparam} %> </div>  
+      <h1>New Customer</h1>      
+    </div>       
+    <div class="main-column-content-content">		 
+      <%= simple_form_for @customer do |f| %>   
+        <% if @customer.errors.any? %>
+            <div class="error_explanation">
+                <div>
+                <h2>Errors : </h2>
+                <ul>               
+                    <% @customer.errors.each do |attr, message| %>
+                        <li><%= message %></li>
+                    <% end %>                 
+                </ul>
+            </div>
+            </div>           
+        <% end %>
+        <% if flash[:notice] != "" %>
+          <div class="successnotice">
+          <div>
+            <h3>Information : </h3>
+            <p><%= flash[:notice] %></p>
+          </div>
+          </div>
+        <% end %>  
+        </br>
+        <%= f.input :Client_ID,  :label => 'Customer ID : ', :required => true, :error => false %>
+        <%= f.input :Branch,  :label => 'Branch : ', :required => true, :error => false %>        
+        <%= f.input :password, :label => 'Password : ', :required => true, :error => false %>
+        <%= f.input :Company_Name,  :label => 'Company Name : ', :required => true, :error => false %>        
+        <%= f.input :Title, :label => 'Title: ' %>
+        <%= f.input :First_Name, :label => 'Given Name : ', :error => false %>
+        <%= f.input :Middle_Name, :label => 'Middle Name : ' %>
+        <%= f.input :Last_Name, :label => 'Surname : ' %>        
+        <%= f.input :Gender, :label => 'Gender : ', collection: [ ['M', 'Male' ], ['F', 'Female'] ], label_method: :last, value_method: :first, :input_html => {:maxlength =>50, :style=> 'width: 300px'}  %>
+        <%= f.input :Address1, :label => 'Address : ' %>
+        <%= f.input :Address2, :label => ': ' %> 
+        <%= f.input :Suburb, :label => 'Suburb : ' %>
+        <%= f.input :City, :label => 'City : ' %>
+        <%= f.input :Postal_Code, :label => 'Post Code : ' %>
+        <%= f.input :Country, :label => 'Country : ' %>
+        <%= f.input :Mobile, :label => 'Mobile No. : ' %>
+        <%= f.input :Phone, :label => 'Phone No. : ' %>
+        <%= f.input :Fax, :label => 'Fax No. : ' %>
+        <%= f.input :Email, :label => 'Email Address : ' %>
+        <%= f.input :Product,  :label => 'Product : ', :required => true, :error => false %>   
+        <%= f.input :Support_Expiry_Date, :label => 'Support Expiry Date : ', start_year: Date.today.year + 500,  end_year: Date.today.year - 150, order: [:day, :month, :year], :include_blank => true %>
+        <%= f.input :LOP_ID, :label => 'Last Operator ID : ', readonly: true, :required => false, :error => false, :input_html => { :value => current_user.Emp_ID } %>        
+        <%= f.submit 'Submit', :class => 'formbutton-center' %>                
+      <% end %>
+    </div>
+  </div>
+</div>
+

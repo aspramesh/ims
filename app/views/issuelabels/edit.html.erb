@@ -1,0 +1,44 @@
+<title><%= 'Issue Label' %></title> 
+<div class="main-banner"><%= link_to image_tag("banner.jpg", alt: "Banner")%></div>
+<div class="clear"></div>     
+<div class="main-column">
+  <div class="main-column-content"> 
+    <div class="main-column-content-heading">      
+      <div class ="main-column-content-RightTopHeading search-link" >    
+      <%= link_to "Back", {:controller => 'issuelabels', :action => 'index', :search => @searchparam} %> </div>  
+      <h1>Edit Issue Label Details</h1>      
+    </div>       
+    <div class="main-column-content-content">		 
+      <%= simple_form_for @issuelabel do |f| %>   
+        <% if @issuelabel.errors.any? %>
+            <div class="error_explanation">
+                <div>
+                <h2>Errors : </h2>
+                <ul>               
+                    <% @issuelabel.errors.each do |attr, message| %>
+                        <li><%= message %></li>
+                    <% end %>                 
+                </ul>
+            </div>
+            </div>           
+        <% end %>
+        <% if flash[:notice] != "" %>
+          <div class="successnotice">
+          <div>
+            <h3>Information : </h3>
+            <p><%= flash[:notice] %></p>
+          </div>
+          </div>
+        <% end %>  
+        </br>
+        <%= f.input :IssueLabel_ID,  :label => 'Issue Label ID : ', :required => false, :error => false, readonly: true %>        
+		<%= f.input :Name, :label => 'Name : ', :required => true, :error => false %>
+        <%= f.input :Description, :label => 'Description : ' %>
+        <%= f.input :LOP_ID, :label => 'Last Operator ID : ', readonly: true, :required => false, :error => false, :input_html => { :value => current_user.Emp_ID } %>        
+        <%= f.submit 'Submit', :class => 'formbutton-center' %>                
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

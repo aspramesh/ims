@@ -1,0 +1,2 @@
+module ApplicationversionsHelper
+end

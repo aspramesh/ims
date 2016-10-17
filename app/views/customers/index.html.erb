@@ -1,0 +1,56 @@
+<title><%= 'Customer' %></title> 
+<div class="main-banner"><%= link_to image_tag("banner.jpg", alt: "Banner")%></div>
+<div class="clear"></div>     
+<div class="main-column">
+  <div class="main-column-content">
+    <div class="main-column-content-heading">
+      <h1>Customer List</h1>      
+    </div>
+    <!-- <div class="right-column-content-img-left"> <%= link_to image_tag("img-1.png", alt: "Banner")%></div>-->
+    <div class="main-column-content-content">
+      </br>
+      <%= form_tag '/customers/index', method: :post do %>
+        <div class="row">            
+         <div class="col-md-3">      
+            <%= text_field_tag :search, params[:search], :class => 'search-input' %>
+          </div>     
+          <div class="col-md-2"> 
+            <%= submit_tag "Search", :class => 'search-button', :name => 'commit'  %> 
+          </div>    
+          <div class="col-md-2"> 
+            <%=  submit_tag "New", :class => 'search-button', :name => 'commit' %>            
+          </div>         
+        </div>
+      <% end %>
+      </br>      
+      <table id="customers" class = "display">
+        <thead>
+          <tr>
+            <th>Client ID</th>     
+            <th>Branch</th>    
+            <th>Company</th>    
+            <th>Product</th>            
+            <th>Support Expiry Date</th>  
+            <th>Options</th>  
+          </tr>
+        </thead>      
+        <tbody> 
+         <% @customers.each do |emp| %>
+          <tr>
+            <td><%= emp.Client_ID %></td>
+            <td><%= emp.Branch %></td>
+            <td><%= emp.Company_Name %></td>
+            <td><%= emp.Product %></td>
+            <td><%= emp.Support_Expiry_Date.strftime("%d/%m/%Y") if emp.Support_Expiry_Date.present?  %></td>
+            <td class = 'search-link' >
+              <%= link_to image_tag("show.png", size: "24x24", alt: "Show"), {:controller => 'customers', :action => 'show', :id => emp.Client_ID, :branch => emp.Branch, :search => params[:search]} %>
+              <%= link_to image_tag("edit.png", size: "24x24",  alt: "Edit"), {:controller => 'customers', :action => 'edit', :id => emp.Client_ID, :branch => emp.Branch, :search => params[:search]} %>
+              <%= link_to image_tag("delete.png", size: "24x24",  alt: "Delete"), {:controller => 'customers', :action => 'delete', :id => emp.Client_ID, :branch => emp.Branch }, data: { confirm: 'Are you sure you want to delete Customer ID : ' + emp.Client_ID + ' ?' } %>
+            </td>
+          </tr>
+         <% end %>        
+        </tbody>   
+      </table>
+    </div>
+  </div>
+</div>

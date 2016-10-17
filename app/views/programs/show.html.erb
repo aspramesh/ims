@@ -1,0 +1,23 @@
+<title><%= 'Program' %></title> 
+<div class="main-banner"><%= link_to image_tag("banner.jpg", alt: "Banner")%></div>
+<div class="clear"></div>     
+<div class="main-column">
+  <div class="main-column-content"> 
+    <div class="main-column-content-heading">      
+      <div class ="main-column-content-RightTopHeading search-link" >
+      <%= link_to "Back", {:controller => 'programs', :action => 'index', :search => @searchparam} %> </div>
+      <h1>Program Details</h1>      
+    </div>       
+    <div class="main-column-content-content">
+      </br>      
+      <%= simple_form_for @program do |f| %>
+      <%= f.input :Program_ID, disabled: true,  :label => 'Program ID : ', :required => false %>
+      <%= f.input :Name, disabled: true, :label => 'Name : ', :required => false %>
+      <%= f.input :Description, disabled: true, :label => 'Description : ' %>
+      <%= f.association :section, disabled: true,  label_method: :Name, value_method: :Module_ID, include_blank: false, :label => 'Module : ', :input_html => {:maxlength =>50, :style=> 'width: 300px'}, :required => false %>
+      <%= f.association :employee, disabled: true,  label_method: :First_Name, value_method: :Emp_ID, include_blank: false, :label => 'Owner : ', :input_html => {:maxlength =>50, :style=> 'width: 300px'}, :required => false %>
+      <%= f.input :LOP_ID, disabled: true, :label => 'Last Operator ID : ', :required => false %>
+      <% end %>
+    </div>
+  </div>
+</div>

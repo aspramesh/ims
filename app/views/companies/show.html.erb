@@ -1,0 +1,32 @@
+<title><%= 'Company' %></title> 
+<div class="main-banner"><%= link_to image_tag("banner.jpg", alt: "Banner")%></div>
+<div class="clear"></div>     
+<div class="main-column">
+  <div class="main-column-content"> 
+    <div class="main-column-content-heading">      
+      <div class ="main-column-content-RightTopHeading search-link" >
+      <%= link_to "Back", {:controller => 'companies', :action => 'index', :search => @searchparam} %> </div>
+      <h1>Company Details</h1>      
+    </div>       
+    <div class="main-column-content-content">
+      </br>      
+      <%= simple_form_for @company do |f| %>
+      <%= f.input :Company_ID, disabled: true,  :label => 'Company ID : ', :required => false %>     
+      <%= f.input :Name, disabled: true, :label => 'Name : ', :required => false %>
+      <%= f.input :Description, disabled: true, :label => 'Description : ' %>
+      <%= f.input :ABN_Number, disabled: true, :label => 'ABN Number : ' %>      
+      <%= f.input :Address1, disabled: true, :label => 'Address : ' %>
+      <%= f.input :Address2, disabled: true, :label => ': ' %> 
+      <%= f.input :Suburb, disabled: true, :label => 'Suburb : ' %>
+      <%= f.input :City, disabled: true, :label => 'City : ' %>
+      <%= f.input :Postal_Code, disabled: true, :label => 'Post Code : ' %>
+      <%= f.input :Country, disabled: true, :label => 'Country : ' %>
+      <%= f.input :Mobile, disabled: true, :label => 'Mobile No. : ' %>
+      <%= f.input :Phone, disabled: true, :label => 'Phone No. : ' %>
+      <%= f.input :Fax, disabled: true, :label => 'Fax No. : ' %>
+      <%= f.input :Email, disabled: true, :label => 'Email Address : ' %>
+      <%= f.input :LOP_ID, disabled: true, :label => 'Last Operator ID : ', :required => false %>
+      <% end %>
+    </div>
+  </div>
+</div>

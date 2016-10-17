@@ -1,0 +1,33 @@
+<h1>Employees</h1>
+
+<%= simple_form_for(@employee) do |f| %>
+
+<%= f.input :Emp_ID %>
+<%= f.input :Password_Hash %>
+<%= f.input :Password_Salt %>
+<%= f.input :Company_Name %>
+<%= f.input :Title %>
+<%= f.input :First_Name %>
+<%= f.input :Middle_Name %>
+<%= f.input :Last_Name %>
+<%= f.input :Gender %>
+<%= f.input :DOB %>
+<%= f.input :DOJ %>
+<%= f.input :Terminated_IND %>
+<%= f.association :Department_ID, :include_blank => false %>
+<%= f.input :Designation_ID %>
+<%= f.input :Manager_ID %>
+<%= f.input :Address1 %>
+<%= f.input :Address2 %> 
+<%= f.input :Suburb %>
+<%= f.input :City %>
+<%= f.input :Postal_Code %>
+<%= f.input :Country %>
+<%= f.input :Mobile %>
+<%= f.input :Phone %>
+<%= f.input :Fax %>
+<%= f.input :Email %>
+<%= f.input :LOP_ID %>
+
+<% end %>
+

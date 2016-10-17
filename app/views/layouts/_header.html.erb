@@ -1,0 +1,48 @@
+<div class="header-wrapper">    
+<div class="logo-menu-container">
+    <div class="logo">Issue Management System</div>
+    <div class="menu">
+      <ul>     
+        <li><%= link_to 'Home', {:controller => 'pages', :action => 'home'} %></li>   
+        <li><div class="dropdown" >
+            <%= link_to '#', :class => "dropdown-toggle", :data => {:toggle => "dropdown"} do %>Master  <span class="caret"></span> <% end %>  
+              <ul class="dropdown-menu" id="dropdownNavul">   
+                <li id="dropdownNavulli"><%= link_to 'Project', {:controller => 'projects', :action => 'index'}%></li>                    
+                <li id="dropdownNavulli"><%= link_to 'Application', {:controller => 'applications', :action => 'index'}%></li>
+                <li id="dropdownNavulli"><%= link_to 'Application Version', {:controller => 'applicationversions', :action => 'index'}%></li>
+                <li id="dropdownNavulli"><%= link_to 'Module', {:controller => 'modules', :action => 'index'}%></li>  
+                <li id="dropdownNavulli"><%= link_to 'Program', {:controller => 'programs', :action => 'index'}%></li>
+                <li class="divider" id="dropdownNavdivider"></li>                
+                <li id="dropdownNavulli"><%= link_to 'Employee', {:controller => 'employees', :action => 'index'}%></li>
+                <li id="dropdownNavulli"><%= link_to 'Company', {:controller => 'companies', :action => 'index'}%></li>
+                <li id="dropdownNavulli"><%= link_to 'Deparment', {:controller => 'departments', :action => 'index'}%></li>
+                <li id="dropdownNavulli"><%= link_to 'Designation', {:controller => 'designations', :action => 'index'}%></li>                
+                <li id="dropdownNavdivider"class="divider"></li>
+                <li id="dropdownNavulli"><%= link_to 'Request Type', {:controller => 'requesttypes', :action => 'index'}%></li>
+                <li id="dropdownNavulli"><%= link_to 'Issue Label', {:controller => 'issuelabels', :action => 'index'}%></li>
+                <li id="dropdownNavulli"><%= link_to 'Issue Source', {:controller => 'issuesources', :action => 'index'}%></li>
+                <li id="dropdownNavulli"><%= link_to 'Issue Status', {:controller => 'issuestatuses', :action => 'index'}%></li>
+                <li id="dropdownNavulli"><%= link_to 'Issue Tag', {:controller => 'issuetags', :action => 'index'}%></li>
+                <li id="dropdownNavulli"><%= link_to 'Note Type', {:controller => 'notetypes', :action => 'index'}%></li>
+                <li id="dropdownNavulli"><%= link_to 'Priority', {:controller => 'priorities', :action => 'index'}%></li>
+                <li id="dropdownNavdivider"class="divider"></li>
+                <li id="dropdownNavulli"><%= link_to 'Customer', {:controller => 'customers', :action => 'index'}%></li>
+                <li id="dropdownNavdivider"class="divider"></li>                
+                <li id="dropdownNavulli"><%= link_to 'IMS Config', {:controller => 'imsconfigs', :action => 'index'}%></li>                             
+              </ul>
+            </div>
+        </li>        
+        <li><div class="dropdown" >           
+            <%= link_to '#', :class => "dropdown-toggle", :data => {:toggle => "dropdown"} do %>Issue  <span class="caret"></span> <% end %>  
+              <ul class="dropdown-menu" id="dropdownNavul">       
+                <li id="dropdownNavulli"><%= link_to 'Issues', {:controller => 'issues', :action => 'index'}%></li>
+                <li id="dropdownNavulli"><%= link_to 'Time Tracker', {:controller => 'timetracker', :action => 'index'}%></li>               
+              </ul>
+            </div>
+        </li>           
+        <li class="nobg"><%= link_to 'About Us', {:controller => 'pages', :action => 'about'}  %></li>        
+      </ul>
+    </div>      
+    <%= render partial: "layouts/toprightuser" %>
+ </div> 
+  </div> 

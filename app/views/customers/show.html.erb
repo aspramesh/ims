@@ -1,0 +1,38 @@
+<title><%= 'Customer' %></title> 
+<div class="main-banner"><%= link_to image_tag("banner.jpg", alt: "Banner")%></div>
+<div class="clear"></div>     
+<div class="main-column">
+  <div class="main-column-content"> 
+    <div class="main-column-content-heading">      
+      <div class ="main-column-content-RightTopHeading search-link" >
+      <%= link_to "Back", {:controller => 'customers', :action => 'index', :search => @searchparam} %> </div>
+      <h1>Customer Details</h1>      
+    </div>       
+    <div class="main-column-content-content">
+      </br>      
+      <%= simple_form_for @customer do |f| %>
+      <%= f.input :Client_ID, disabled: true,  :label => 'Customer ID : ', :required => false %>
+      <%= f.input :Branch, disabled: true,  :label => 'Branch : ', :required => false %>        
+      <%= f.input :Company_Name, disabled: true,  :label => 'Company Name : ', :required => false %>        
+      <%= f.input :Title, disabled: true, :label => 'Title: ' %>
+      <%= f.input :First_Name, disabled: true, :label => 'Given Name : ', :required => false %>
+      <%= f.input :Middle_Name, disabled: true, :label => 'Middle Name : ' %>
+      <%= f.input :Last_Name, disabled: true, :label => 'Surname : ' %>
+      <%= f.input :Gender, disabled: true, :label => 'Gender : ', collection: [ ['M', 'Male' ], ['F', 'Female'] ], label_method: :last, value_method: :first, :input_html => {:maxlength =>50, :style=> 'width: 300px'} %>
+      <%= f.input :Address1, disabled: true, :label => 'Address : ' %>
+      <%= f.input :Address2, disabled: true, :label => ': ' %> 
+      <%= f.input :Suburb, disabled: true, :label => 'Suburb : ' %>
+      <%= f.input :City, disabled: true, :label => 'City : ' %>
+      <%= f.input :Postal_Code, disabled: true, :label => 'Post Code : ' %>
+      <%= f.input :Country, disabled: true, :label => 'Country : ' %>
+      <%= f.input :Mobile, disabled: true, :label => 'Mobile No. : ' %>
+      <%= f.input :Phone, disabled: true, :label => 'Phone No. : ' %>
+      <%= f.input :Fax, disabled: true, :label => 'Fax No. : ' %>
+      <%= f.input :Email, disabled: true, :label => 'Email Address : ' %>
+      <%= f.input :Product, disabled: true,  :label => 'Product : ', :required => false %>   
+      <%= f.input :Support_Expiry_Date, disabled: true, :label => 'Support Expiry Date : ', start_year: Date.today.year, end_year: Date.today.year - 150, order: [:day, :month, :year], :include_blank => true %>
+      <%= f.input :LOP_ID, disabled: true, :label => 'Last Operator ID : ', :required => false %>
+      <% end %>
+    </div>
+  </div>
+</div>

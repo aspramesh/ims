@@ -1,0 +1,56 @@
+<title><%= 'Module' %></title> 
+<div class="main-banner"><%= link_to image_tag("banner.jpg", alt: "Banner")%></div>
+<div class="clear"></div>     
+<div class="main-column">
+  <div class="main-column-content">
+    <div class="main-column-content-heading">
+      <h1>Module List</h1>      
+    </div>
+    <!-- <div class="right-column-content-img-left"> <%= link_to image_tag("img-1.png", alt: "Banner")%></div>-->
+    <div class="main-column-content-content">
+      </br>
+      <%= form_tag '/modules/index', method: :post do %>
+        <div class="row">            
+         <div class="col-md-3">      
+            <%= text_field_tag :search, params[:search], :class => 'search-input' %>
+          </div>     
+          <div class="col-md-2"> 
+            <%= submit_tag "Search", :class => 'search-button', :name => 'commit'  %> 
+          </div>    
+          <div class="col-md-2"> 
+            <%=  submit_tag "New", :class => 'search-button', :name => 'commit' %>            
+          </div>         
+        </div>
+      <% end %>
+      </br>      
+      <table id="modules" class = "display">
+        <thead>
+          <tr>
+            <th>Module ID</th>     
+            <th>Name</th>    
+            <th>Application</th>    
+            <th>Owner</th>                        
+            <th>Options</th>  
+          </tr>
+        </thead>      
+        <tbody> 
+         <% @modules.each do |app| %>
+          <tr>
+            <td><%= app.Module_ID %></td>
+            <td><%= app.Name %></td>
+            <td><%= app.application.Name %></td>
+            <td><%= app.employee.Title.to_s + ' ' + app.employee.First_Name.to_s + ' ' + app.employee.Middle_Name.to_s + ' ' + app.employee.Last_Name.to_s %></td>
+            <td class = 'search-link' >
+              <%= link_to image_tag("show.png", size: "24x24", alt: "Show"), {:controller => 'modules', :action => 'show', :id => app.Module_ID, :search => params[:search]} %>
+              <%= link_to image_tag("edit.png", size: "24x24",  alt: "Edit"), {:controller => 'modules', :action => 'edit', :id => app.Module_ID, :search => params[:search]} %>
+              <%= link_to image_tag("delete.png", size: "24x24",  alt: "Delete"), {:controller => 'modules', :action => 'delete', :id => app.Module_ID }, data: { confirm: 'Are you sure you want to delete Module ID : ' + app.Module_ID + ' ?' } %>
+            </td>
+          </tr>
+         <% end %>        
+        </tbody>   
+      </table>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,41 @@
+<title><%= 'IMS Configuration' %></title> 
+<div class="main-banner"><%= link_to image_tag("banner.jpg", alt: "Banner")%></div>
+<div class="clear"></div>     
+<div class="main-column">
+  <div class="main-column-content"> 
+    <div class="main-column-content-heading">      
+      <div class ="main-column-content-RightTopHeading search-link" >    
+      <%= link_to "Back", {:controller => 'imsconfigs', :action => 'index', :search => @searchparam} %> </div>  
+      <h1>New IMS Configuration</h1>      
+    </div>       
+    <div class="main-column-content-content">		 
+      <%= simple_form_for @imsconfig do |f| %>   
+        <% if @imsconfig.errors.any? %>
+            <div class="error_explanation">
+                <div>
+                <h2>Errors : </h2>
+                <ul>               
+                    <% @imsconfig.errors.each do |attr, message| %>
+                        <li><%= message %></li>
+                    <% end %>                 
+                </ul>
+            </div>
+            </div>           
+        <% end %>
+        </br>
+        <%= f.input :IMSConfig_ID,  :label => 'IMS Configuration ID : ', :required => true, :error => false %>
+        <%= f.input :Name, :label => 'Name : ', :required => true, :error => false %>
+        <%= f.input :Description, :label => 'Description : ' %>
+        <%= f.input :Value_Integer, :label => 'Integer : ' %>
+		<%= f.input :Value_Decimal, :label => 'Decimal : ' %>
+		<%= f.input :Value_Date, :label => 'Date : ', start_year: Date.today.year + 500, end_year: Date.today.year - 150, order: [:day, :month, :year], :include_blank => true %>
+		<%= f.input :Value_Datetime, :label => 'DateTime : ', include_seconds: true, start_year: Date.today.year + 500, end_year: Date.today.year - 150, order: [:day, :month, :year], :include_blank => true %>
+		<%= f.input :Value_Time, :label => 'Time : ', include_seconds: true, :include_blank => true %>
+		<%= f.input :Value_String, :label => 'String : ' %>
+        <%= f.input :LOP_ID, :label => 'Last Operator ID : ', readonly: true, :required => false, :error => false, :input_html => { :value => current_user.Emp_ID } %>        
+        <%= f.submit 'Submit', :class => 'formbutton-center' %>                
+      <% end %>
+    </div>
+  </div>
+</div>
+

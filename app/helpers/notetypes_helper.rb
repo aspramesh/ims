@@ -1,0 +1,2 @@
+module NotetypesHelper
+end

@@ -1,0 +1,41 @@
+<h1>Pages#app</h1>
+<p>Find me in app/views/pages/app.html.erb</p>
+
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="#">HTML</a></li>
+    <li><a href="#">CSS</a></li>
+    <li><a href="#">JavaScript</a></li>
+  </ul>
+</div>
+
+
+<a href='#' class="dropdown-toggle" data-toggle="dropdown">
+     <span>Master</span><b class="caret"></b>
+     </a>
+     <ul class="dropdown-menu">     	
+		<li><%= link_to 'Application', {:controller => 'pages', :action => 'app'}%></li>
+		<li><%= link_to 'Application Version', {:controller => 'pages', :action => 'appversion'}%></li>
+		<li class="divider"></li>
+		<li><%= link_to 'Customer', {:controller => 'pages', :action => 'customer'}%></li>
+		<li><%= link_to 'Deparment', {:controller => 'pages', :action => 'department'}%></li>
+		<li><%= link_to 'Designation', {:controller => 'pages', :action => 'designation'}%></li>
+		<li><%= link_to 'Employee', {:controller => 'pages', :action => 'employee'}%></li>
+		<li class="divider"></li>
+		<li><%= link_to 'Issue Label', {:controller => 'pages', :action => 'issuelabel'}%></li>
+		<li><%= link_to 'Issue Source', {:controller => 'pages', :action => 'issuesource'}%></li>
+		<li><%= link_to 'Issue Status', {:controller => 'pages', :action => 'issuestatus'}%></li>
+		<li><%= link_to 'Issue Tag', {:controller => 'pages', :action => 'issuetag'}%></li>
+		<li><%= link_to 'Notes Tpe', {:controller => 'pages', :action => 'notetype'}%></li>
+		<li><%= link_to 'Priority', {:controller => 'pages', :action => 'priority'}%></li>
+		<li class="divider"></li>
+		<li><%= link_to 'Module', {:controller => 'pages', :action => 'module'}%></li>	
+		<li><%= link_to 'Program', {:controller => 'pages', :action => 'program'}%></li>
+		<li class="divider"></li>
+		<li><%= link_to 'Project', {:controller => 'pages', :action => 'project'}%></li>
+		<li><%= link_to 'Request Type', {:controller => 'pages', :action => 'requesttype'}%></li>
+		<li class="divider"></li>
+		<li><%= link_to 'IMS Config', {:controller => 'pages', :action => 'imsconfig'}%></li>
+	</ul>

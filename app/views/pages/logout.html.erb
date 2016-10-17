@@ -1,0 +1,25 @@
+<title><%= 'Logout' %></title> 
+<div class="main-banner"><%= link_to image_tag("banner.jpg", alt: "Banner")%></div>
+<div class="clear"></div>     
+<div class="main-column">
+   <div class="main-column-content-withimg">    
+      <div align="center">
+        <div class="dark-panel">
+            <div class="dark-panel-top"></div>
+            <div class="dark-panel-center">
+              <ul>
+                <li>
+                  <h1>Logged out</h1>
+                </li>
+                <li>
+                  <p>You are now logged out.</p><p>Please click the button to log in back.</p>
+                </li>               
+                <li class="button"><%= link_to "Log In", {:controller => 'pages', :action => 'login'} %></li>
+              </ul>
+            </div>        
+            <div class="dark-panel-bottom"></div>
+          </div>    
+        </div>   
+      </div>  
+  </div>
+</div>

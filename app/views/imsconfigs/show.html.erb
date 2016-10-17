@@ -1,0 +1,27 @@
+<title><%= 'IMS Configuration' %></title> 
+<div class="main-banner"><%= link_to image_tag("banner.jpg", alt: "Banner")%></div>
+<div class="clear"></div>     
+<div class="main-column">
+  <div class="main-column-content"> 
+    <div class="main-column-content-heading">      
+      <div class ="main-column-content-RightTopHeading search-link" >
+      <%= link_to "Back", {:controller => 'imsconfigs', :action => 'index', :search => @searchparam} %> </div>
+      <h1>IMS Configuration Details</h1>      
+    </div>       
+    <div class="main-column-content-content">
+      </br>      
+      <%= simple_form_for @imsconfig do |f| %>
+      <%= f.input :IMSConfig_ID, disabled: true,  :label => 'IMS Configuration ID : ', :required => false %>
+      <%= f.input :Name, disabled: true, :label => 'Name : ', :required => false %>
+      <%= f.input :Description, disabled: true, :label => 'Description : ' %>
+	  <%= f.input :Value_Integer, disabled: true, :label => 'Integer : ' %>
+	  <%= f.input :Value_Decimal, disabled: true, :label => 'Decimal : ' %>
+	  <%= f.input :Value_Date, disabled: true, :label => 'Date : ', start_year: Date.today.year + 500, end_year: Date.today.year - 150, order: [:day, :month, :year], :include_blank => true %>
+	  <%= f.input :Value_Datetime, disabled: true, :label => 'DateTime : ', start_year: Date.today.year + 500, end_year: Date.today.year - 150, order: [:day, :month, :year], include_seconds: true, :include_blank => true %>
+	  <%= f.input :Value_Time, disabled: true, :label => 'Time : ', include_seconds: true, :include_blank => true %>
+	  <%= f.input :Value_String, disabled: true, :label => 'String : ' %>
+      <%= f.input :LOP_ID, disabled: true, :label => 'Last Operator ID : ', :required => false %>
+      <% end %>
+    </div>
+  </div>
+</div>

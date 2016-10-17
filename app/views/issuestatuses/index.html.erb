@@ -1,0 +1,52 @@
+<title><%= 'Issue Status' %></title> 
+<div class="main-banner"><%= link_to image_tag("banner.jpg", alt: "Banner")%></div>
+<div class="clear"></div>     
+<div class="main-column">
+  <div class="main-column-content">
+    <div class="main-column-content-heading">
+      <h1>Issue Status List</h1>      
+    </div>
+    <!-- <div class="right-column-content-img-left"> <%= link_to image_tag("img-1.png", alt: "Banner")%></div>-->
+    <div class="main-column-content-content">
+      </br>
+      <%= form_tag '/issuestatuses/index', method: :post do %>
+        <div class="row">            
+         <div class="col-md-3">      
+            <%= text_field_tag :search, params[:search], :class => 'search-input' %>
+          </div>     
+          <div class="col-md-2"> 
+            <%= submit_tag "Search", :class => 'search-button', :name => 'commit'  %> 
+          </div>    
+          <div class="col-md-2"> 
+            <%=  submit_tag "New", :class => 'search-button', :name => 'commit' %>            
+          </div>         
+        </div>
+      <% end %>
+      </br>      
+      <table id="issuestatuses" class = "display">
+        <thead>
+          <tr>
+            <th>Issue Status ID</th>     
+            <th>Name</th>                              
+            <th>Options</th>  
+          </tr>
+        </thead>      
+        <tbody> 
+         <% @issuestatuses.each do |app| %>
+          <tr>
+            <td><%= app.IssueStatus_ID %></td>
+            <td><%= app.Name %></td>           
+            <td class = 'search-link' >
+              <%= link_to image_tag("show.png", size: "24x24", alt: "Show"), {:controller => 'issuestatuses', :action => 'show', :id => app.IssueStatus_ID, :search => params[:search]} %>
+              <%= link_to image_tag("edit.png", size: "24x24",  alt: "Edit"), {:controller => 'issuestatuses', :action => 'edit', :id => app.IssueStatus_ID, :search => params[:search]} %>
+              <%= link_to image_tag("delete.png", size: "24x24",  alt: "Delete"), {:controller => 'issuestatuses', :action => 'delete', :id => app.IssueStatus_ID }, data: { confirm: 'Are you sure you want to delete Issue Status ID : ' + app.IssueStatus_ID + ' ?' } %>
+            </td>
+          </tr>
+         <% end %>        
+        </tbody>   
+      </table>
+    </div>
+  </div>
+</div>
+
+

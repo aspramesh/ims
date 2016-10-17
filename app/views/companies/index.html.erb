@@ -1,0 +1,52 @@
+<title><%= 'Company' %></title> 
+<div class="main-banner"><%= link_to image_tag("banner.jpg", alt: "Banner")%></div>
+<div class="clear"></div>     
+<div class="main-column">
+  <div class="main-column-content">
+    <div class="main-column-content-heading">
+      <h1>Company List</h1>      
+    </div>
+    <!-- <div class="right-column-content-img-left"> <%= link_to image_tag("img-1.png", alt: "Banner")%></div>-->
+    <div class="main-column-content-content">
+      </br>
+      <%= form_tag '/companies/index', method: :post do %>
+        <div class="row">            
+         <div class="col-md-3">      
+            <%= text_field_tag :search, params[:search], :class => 'search-input' %>
+          </div>     
+          <div class="col-md-2"> 
+            <%= submit_tag "Search", :class => 'search-button', :name => 'commit'  %> 
+          </div>    
+          <div class="col-md-2"> 
+            <%=  submit_tag "New", :class => 'search-button', :name => 'commit' %>            
+          </div>         
+        </div>
+      <% end %>
+      </br>      
+      <table id="companies" class = "display">
+        <thead>
+          <tr>
+            <th>Company ID</th>     
+            <th>Name</th>    
+            <th>ABN Number</th>    
+            <th>Options</th>  
+          </tr>
+        </thead>      
+        <tbody> 
+         <% @companies.each do |comp| %>
+          <tr>
+            <td><%= comp.Company_ID %></td>
+            <td><%= comp.Name %></td>
+            <td><%= comp.ABN_Number %></td>          
+            <td class = 'search-link' >
+              <%= link_to image_tag("show.png", size: "24x24", alt: "Show"), {:controller => 'companies', :action => 'show', :id => comp.Company_ID, :search => params[:search]} %>
+              <%= link_to image_tag("edit.png", size: "24x24",  alt: "Edit"), {:controller => 'companies', :action => 'edit', :id => comp.Company_ID, :search => params[:search]} %>
+              <%= link_to image_tag("delete.png", size: "24x24",  alt: "Delete"), {:controller => 'companies', :action => 'delete', :id => comp.Company_ID }, data: { confirm: 'Are you sure you want to delete Company ID : ' + comp.Company_ID + ' ?' } %>
+            </td>
+          </tr>
+         <% end %>        
+        </tbody>   
+      </table>
+    </div>
+  </div>
+</div>

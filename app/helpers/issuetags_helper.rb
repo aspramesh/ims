@@ -1,0 +1,2 @@
+module IssuetagsHelper
+end
