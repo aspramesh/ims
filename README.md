@@ -1,2 +1,0 @@
-# ims
-Issue Management System 
