@@ -103,6 +103,7 @@ GEM
     mysql2 (0.4.3-x86-mingw32)
     nokogiri (1.6.7.2-x86-mingw32)
       mini_portile2 (~> 2.0.0.rc2)
+    pg (0.18.4-x86-mingw32)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -201,6 +202,7 @@ DEPENDENCIES
   jquery-turbolinks
   jquery-ui-rails
   mysql2 (>= 0.3.13, < 0.5)
+  pg
   rails (= 4.2.5.1)
   rails_12factor
   sass-rails (~> 5.0)
